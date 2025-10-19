@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lasang Pinoy: A Guide to Traditional Filipino Recipes</title>
+  <style>
+    :root{
+      --brand:#b33c00;
+      --card-bg: rgba(255,255,255,0.92);
+      --card-ghost: rgba(255,255,255,0.65);
+      --txt:#111;
+    }
+    *{box-sizing:border-box}
+    body,html{height:100%;margin:0;font-family:Arial, Helvetica, sans-serif;color:var(--txt);}
+    /* PAGE BACKGROUND: use your provided image saved as "bg.jpg" in same folder */
+    body{
+      background: #f7f3ef;
+      min-height:100%;
+      position:relative;
+    }
+    /* Full-page background image with blur and dark overlay for better contrast */
+    .bg {
+      position:fixed;
+      inset:0;
+      background-image:url('Salo.jpg'); /* <-- save your photo as bg.jpg in same folder */
+      background-size:cover;
+      background-position:center;
+      filter: blur(6px) saturate(110%);
+      transform: scale(1.03);
+      z-index:0;
+    }
+    /* subtle dark overlay */
+    .bg-overlay {
+      position:fixed;
+      inset:0;
+      background: linear-gradient(rgba(0,0,0,0.28), rgba(0,0,0,0.28));
+      z-index:0;
+    }
+
+    /* Page content sits above background */
+    .page {
+      position:relative;
+      z-index:1;
+      max-width:940px;
+      margin:28px auto;
+      padding:18px;
+    }
+
+    header{
+      background: linear-gradient(90deg, rgba(179,60,0,0.95), rgba(179,60,0,0.85));
+      color:#fff;
+      padding:18px;
+      border-radius:10px;
+      text-align:center;
+      box-shadow:0 8px 30px rgba(0,0,0,0.25);
+    }
+
+    .purpose{
+      margin-top:14px;
+      background: var(--card-bg);
+      padding:14px 16px;
+      border-radius:10px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.12);
+      line-height:1.45;
+    }
+
+    /* recipe cards */
+    .recipe{
+      margin-top:14px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.90));
+      border-radius:12px;
+      padding:12px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.12);
+      border:1px solid rgba(0,0,0,0.04);
+    }
+
+    .recipe-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      cursor:pointer;
+    }
+    .recipe-header h2{margin:0;color:var(--brand);font-size:18px}
+    .arrow{
+      display:inline-grid;
+      place-items:center;
+      width:34px;height:34px;border-radius:8px;
+      background:var(--card-ghost);
+      border:1px solid rgba(0,0,0,0.06);
+      font-weight:700;
+      transition:transform .22s ease, background .18s ease;
+      user-select:none;
+    }
+    .arrow.rotate{ transform:rotate(90deg); background:rgba(179,60,0,0.12); color:#fff; }
+
+    .recipe-description{ display:none; margin-top:10px; line-height:1.45; color:#222; }
+    .recipe-details{ display:none; margin-top:12px; color:#222; }
+
+    button.check{
+      background:var(--brand);
+      color:#fff;
+      border:none;
+      border-radius:6px;
+      padding:8px 12px;
+      cursor:pointer;
+      margin-top:10px;
+      font-weight:600;
+    }
+    button.check:hover{opacity:0.95}
+    ul, ol { margin:8px 0 0 18px; padding:0; color:#222; }
+
+    footer{
+      margin-top:20px;
+      text-align:center;
+      color:rgba(255,255,255,0.9);
+      font-size:13px;
+    }
+
+    /* responsive tweaks */
+    @media (max-width:640px){
+      .page{padding:12px}
+      .arrow{width:30px;height:30px}
+      header{padding:14px}
+    }
+  </style>
+</head>
+<body>
+  <!-- background layers -->
+  <div class="bg" aria-hidden="true"></div>
+  <div class="bg-overlay" aria-hidden="true"></div>
+
+  <div class="page">
+    <header>
+      <h1>Lasang Pinoy: A Guide to Traditional Filipino Recipes</h1>
+    </header>        
+
+      <!-- RECIPE: Adobo -->
+      <article class="recipe" data-id="adobo">
+        <div class="recipe-header" onclick="toggleDescription(this)">
+          <h2>Adobo</h2>
+          <span class="arrow" aria-hidden="true">▶</span>
+        </div>        
+
+        <div class="recipe-description" aria-hidden="true">
+            <img src="Badobo.jpg" alt="Adobo" style="width: 100%; border-radius: 10px;">
+           <div>                                 
+            </div>Adobo is a dish that is usually made with chicken and pork. Tastes like a bold, savory-salty and sour stew, often with a hint of sweetness. It is widely considered to be the unofficial national dish of the Philippines, and it is known for its long shelf life due to the preservative qualities of vinegar.
+          </p>
+          <button class="check" onclick="openDetailsFor(this)">Check Recipe</button>
+
+          <div class="recipe-details" aria-hidden="true">
+            <p><strong>Ingredients:</strong></p>
+            <ul>
+              <li>1 ½ lb. chicken or pork (cubed)</li>
+              <li>1 ½ teaspoons whole peppercorn (pamintang buo)</li>
+              <li>5 to 6 pieces dried bay leaves (dahon ng laurel)</li>
+              <li>6 to 8 cloves garlic (crushed)</li>
+              <li>5 tablespoons soy sauce</li>
+              <li>3 tablespoons coconut vinegar</li>
+              <li>1 ½ cup water or beef broth</li>
+              <li>3 tablespoons cooking oil</li>
+              <li>Salt to taste (optional)</li>
+            </ul>
+
+            <p><strong>Instructions:</strong></p>
+            <ol>
+              <li>In a bowl, combine chicken or pork with soy sauce, crushed garlic, and bay leaves. Mix well and marinate for at least 30 minutes.</li>
+              <li>Heat cooking oil in a pan over medium heat. Add the marinated meat (reserve the marinade) and sauté until lightly browned.</li>
+              <li>Pour in the reserved marinade, vinegar, and water or broth. Do not stir immediately after adding the vinegar. Allow it to boil for a few minutes.</li>
+              <li>Lower the heat and simmer for about 30–40 minutes, or until the meat becomes tender and the sauce slightly thickens.</li>
+              <li>Add whole peppercorns and salt to taste. Continue to simmer until the sauce reaches your desired consistency.</li>
+              <li>Transfer to a serving dish and serve hot with steamed rice.</li>
+            </ol>
+          </div>
+        </div>
+      </article 
+
+      <!-- SINIGANG -->
+      <article class="recipe" data-id="sinigang">
+        <div class="recipe-header" onclick="toggleDescription(this)">
+          <h2>Sinigang</h2>
+          <span class="arrow" aria-hidden="true">▶</span>
+        </div>
+
+        <div class="recipe-description" aria-hidden="true">
+            <img src="Sinigang.jpg" alt="Adobo" style="width: 100%; border-radius: 10px;">
+          <div>
+           </div>Sinigang, sometimes anglicized as sour broth, is a Filipino soup or stew characterized by its sour and savory taste. This recipe uses pork as the main ingredient. Other proteins and seafood can also be used. Beef, shrimp, fish are commonly used to cook sinigang.
+          </p>
+          <button class="check" onclick="openDetailsFor(this)">Check Recipe</button>
+
+          <div class="recipe-details" aria-hidden="true">
+            <p><strong>Ingredients:</strong></p>
+            <ul>
+              <li>2 lbs. pork belly</li>
+              <li>1 bunch water spinach (chopped)</li>
+              <li>8 pieces string beans (cut into 2-inch pieces)</li>
+              <li>2 pieces eggplants (sliced)</li>
+              <li>1 piece daikon radish</li>
+              <li>8 pieces okras</li>
+              <li>2 pieces tomatoes (sliced into wedges)</li>
+              <li>2 pieces long green pepper</li>
+              <li>1 piece onion (sliced into wedges)</li>
+              <li>2 quarts water</li>
+              <li>Fish sauce and ground black pepper (to taste)</li>
+            </ul>
+
+            <p><strong>Instructions:</strong></p>
+            <ol>
+              <li>In a large pot, pour in 2 quarts of water and bring to a boil. Add the pork belly and simmer until tender. Skim off any scum that rises to the surface.</li>
+              <li>Add the onion, tomatoes, and long green peppers. Simmer for a few minutes to allow the flavors to blend.</li>
+              <li>Put in the daikon radish, eggplant, okra, and string beans. Continue to cook until the vegetables are tender.</li>
+              <li>Add fish sauce and ground black pepper to taste. Adjust the seasoning according to preference.</li>
+              <li>Add the chopped water spinach and cook for another 1–2 minutes.</li>
+              <li>Transfer to a serving bowl and serve immediately with steamed rice.</li>
+            </ol>
+          </div>
+        </div>
+      </article>
+
+      <!-- BULALO -->
+      <article class="recipe" data-id="bulalo">
+        <div class="recipe-header" onclick="toggleDescription(this)">
+          <h2>Bulalo</h2>
+          <span class="arrow" aria-hidden="true">▶</span>
+        </div>
+
+        <div class="recipe-description" aria-hidden="true">
+            <img src="Bulalo.jpg" alt="Adobo" style="width: 100%; border-radius: 10px;">
+          <div>
+          </div>Bulalo is a traditional Filipino beef soup made from shank and bone marrow slow-cooked until tender. It is known for its rich, savory broth and melt-in-your-mouth meat. This comforting dish is often enjoyed hot and served with steamed rice or fish sauce on the side for added flavor.
+          </p>
+          <button class="check" onclick="openDetailsFor(this)">Check Recipe</button>
+
+          <div class="recipe-details" aria-hidden="true">
+            <p><strong>Ingredients:</strong></p>
+            <ul>
+              <li>2 lbs beef shank</li>
+              <li>½ cabbage (whole leaf individually detached)</li>
+              <li>1 bundle bok choy</li>
+              <li>2 cobs corn (each cut into 3 parts)</li>
+              <li>2 Tablespoons whole peppercorn</li>
+              <li>1/2 cup green onions (cut unto 1 1/2 inch pieces)</li>
+              <li>1 onion</li>
+              <li>34 ounces water</li>
+              <li>fish sauce to taste (optional)</li>
+            </ul>
+
+            <p><strong>Instructions:</strong></p>
+            <ol>
+              <li>In a large pot, pour in the water and bring to a boil. Add the beef shank and simmer over low heat. Skim off any scum that rises to the surface.</li>
+              <li>Add the whole onion and peppercorns to the pot. Continue to simmer until the meat becomes tender and the broth develops a rich flavor.</li>
+              <li>Put in the corn pieces and cook until they are tender and slightly sweet.</li>
+              <li>Add the cabbage and bok choy. Continue to cook for a few minutes or until the vegetables are just tender.</li>
+              <li>Add fish sauce according to taste. You may also adjust the seasoning with salt if desired.</li>
+              <li>Add the green onions before removing from heat. Serve hot with steamed rice and a side of fish sauce with calamansi or chili for added flavor.</li>
+            </ol>
+          </div>
+        </div>
+      </article>
+
+      <!-- KARE-KARE -->
+      <article class="recipe" data-id="karekare">
+        <div class="recipe-header" onclick="toggleDescription(this)">
+          <h2>Kare-kare</h2>
+          <span class="arrow" aria-hidden="true">▶</span>
+        </div>
+
+        <div class="recipe-description" aria-hidden="true">
+            <img src="Kare.jpg" alt="Adobo" style="width: 100%; border-radius: 10px;">
+          <p><div>
+          </div>Kare-Kare is a traditional Filipino stew made with oxtail, vegetables, and a thick peanut-based sauce. It is known for its rich, creamy texture and mild, nutty flavor. The dish is often served with bagoong (shrimp paste) on the side, which adds a savory contrast to the sweetness of the peanut sauce.
+          </p>
+          <button class="check" onclick="openDetailsFor(this)">Check Recipe</button>
+
+          <div class="recipe-details" aria-hidden="true">
+            <p><strong>Ingredients:</strong></p>
+            <ul>
+              <li>3 lbs oxtail (cut in 2 inch slices you an also use tripe or beef slices)</li>
+              <li>1 piece small banana flower bud (sliced)</li>
+              <li>1 bundle pechay or bok choy</li>
+              <li>1 bundle string beans (cut into 2 inch slices)</li>
+              <li>4 pieces eggplants (sliced)</li>
+              <li>1 cup ground peanuts</li>
+              <li>1/2 cup peanut butter</li>
+              <li>1/2 cup shrimp paste</li>
+              <li>34 Ounces water (about 1 Liter)</li>
+              <li>1/2 cup annatto seeds (soaked in a cup of water)</li>
+              <li>1/2 cup toasted ground rice</li>
+              <li>1 tbsp garlic (minced)</li>
+              <li>1 piece onion (chopped)</li>
+              <li>salt and pepper</li>
+            </ul>
+
+            <p><strong>Instructions:</strong></p>
+            <ol>
+              <li>In a large pot, pour in the water and bring to a boil. Add the oxtail and simmer until tender. Skim off any scum that rises to the surface.</li>
+              <li>Soak the annatto seeds in a cup of warm water until the color is extracted. Strain and set the colored water aside.</li>
+              <li>In a separate pan, heat oil and sauté the garlic and onion until fragrant and translucent.</li>
+              <li>Transfer the tender oxtail into the sautéed mixture. Pour in the annatto water and stir to mix evenly.</li>
+              <li>Combine the ground peanuts, peanut butter, and toasted ground rice with some broth from the boiled meat. Stir until well blended, then pour into the pot. Simmer until the sauce thickens.</li>
+              <li>Put in the eggplants, banana flower, string beans, and pechay. Continue to cook until the vegetables are tender.</li>
+              <li>Season with salt and pepper to taste. Serve hot with steamed rice and shrimp paste (bagoong) on the side.</li>
+            </ol>
+          </div>
+        </div>
+      </article>
+
+      <!-- KALDERETA -->
+      <article class="recipe" data-id="kaldereta">
+        <div class="recipe-header" onclick="toggleDescription(this)">
+          <h2>Kaldereta</h2>
+          <span class="arrow" aria-hidden="true">▶</span>
+        </div>
+
+        <div class="recipe-description" aria-hidden="true">
+            <img src="Kalderetaa.jpg" alt="Adobo" style="width: 100%; border-radius: 10px;">
+          <div> 
+          </div>Kaldereta is a traditional Filipino stew made with pork slowly cooked in a flavorful tomato-based sauce. It is known for its rich, savory taste and smooth, hearty texture. It is flavored with liver spread, which gives the dish its distinct creamy texture and savory depth. Often enjoyed on special occasions.
+          </p>
+          <button class="check" onclick="openDetailsFor(this)">Check Recipe</button>
+
+          <div class="recipe-details" aria-hidden="true">
+            <p><strong>Ingredients:</strong></p>
+            <ul>
+              <li>2 lbs. Pork (sliced into cubes)</li>
+              <li>1 piece Knorr Pork cube</li>
+              <li>8 oz. tomato sauce</li>
+              <li>¾ cup green olives</li>
+              <li>1 piece red bell pepper (sliced)</li>
+              <li>1 piece green bell pepper (sliced)</li>
+              <li>2 pieces potatoes (cubed)</li>
+              <li>2 pieces carrot (sliced)</li>
+              <li>1 piece onion (chopped)</li>
+              <li>3 cloves garlic (chopped)</li>
+              <li>1 1/2 cups water</li>
+              <li>½ cup liver spread</li>
+              <li>3 tablespoons cooking oil</li>
+              <li>Salt and ground black pepper to taste</li>
+            </ul>
+
+            <p><strong>Instructions:</strong></p>
+            <ol>
+              <li>Heat cooking oil in a pan over medium heat. Sauté the garlic and onion until fragrant and translucent.</li>
+              <li>Add the pork cubes and cook until lightly browned on all sides.</li>
+              <li>Pour in the tomato sauce and water. Add the Knorr Pork cube and stir well. Bring to a boil.</li>
+              <li>Lower the heat and simmer for 40–60 minutes, or until the pork becomes tender and the sauce begins to thicken. Add more water if necessary.</li>
+              <li>Put in the potatoes and carrots. Continue to cook until they are almost tender.</li>
+              <li>Stir in the liver spread and mix until well combined, allowing the sauce to become rich and creamy.</li>
+              <li>Add the bell peppers and olives. Add the red and green bell peppers along with the green olives. Cook for another 3–5 minutes.</li>
+              <li>Add salt and ground black pepper as desired.</li>
+              <li>Transfer to a serving dish and serve hot with steamed rice.</li>
+            </ol>
+          </div>
+        </div>
+      </article>
+
+    </main>
+
+    <footer>
+      <p style="color:rgba(255,255,255,0.85)">© 2025 Lasang Pinoy. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Toggle description: only one open at a time; closing others and resetting arrows.
+    function toggleDescription(headerEl) {
+      const allDesc = document.querySelectorAll('.recipe-description');
+      const allArrows = document.querySelectorAll('.arrow');
+      const thisDesc = headerEl.nextElementSibling;
+      const thisArrow = headerEl.querySelector('.arrow');
+
+      // Close other descriptions and remove rotate
+      allDesc.forEach(d => { if (d !== thisDesc) d.style.display = 'none'; });
+      allArrows.forEach(a => { if (a !== thisArrow) a.classList.remove('rotate'); });
+
+      // Close all details when switching descriptions
+      document.querySelectorAll('.recipe-details').forEach(det => det.style.display = 'none');
+
+      // Toggle current
+      const open = thisDesc.style.display === 'block';
+      thisDesc.style.display = open ? 'none' : 'block';
+      thisArrow.classList.toggle('rotate', !open);
+    }
+
+    // Open/close details and close other open details
+    function openDetailsFor(btnEl) {
+      const allDetails = document.querySelectorAll('.recipe-details');
+      const thisDetails = btnEl.nextElementSibling;
+
+      // ensure description is open
+      const desc = btnEl.closest('.recipe-description');
+      const header = desc ? desc.previousElementSibling : null;
+      if (desc && desc.style.display !== 'block' && header) toggleDescription(header);
+
+      allDetails.forEach(d => { if (d !== thisDetails) d.style.display = 'none'; });
+
+      const open = thisDetails.style.display === 'block';
+      thisDetails.style.display = open ? 'none' : 'block';
+    }
+
+    // clicking outside: close all (optional)
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.recipe')) {
+        document.querySelectorAll('.recipe-description').forEach(d => d.style.display = 'none');
+        document.querySelectorAll('.recipe-details').forEach(d => d.style.display = 'none');
+        document.querySelectorAll('.arrow').forEach(a => a.classList.remove('rotate'));
+      }
+    });
+  </script>
+</body>
+</html>
+</html>
